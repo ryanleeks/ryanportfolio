@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>The Mines | Calic Design</title>
+        <meta name="viewport" content="width=device-width, initial-scal=1">
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+        <script>
+            document.addEventListener("contextmenu", function(event){
+                event.preventDefault();
+                alert('Right click menu is disabled');
+            }, false);
+        </script>
+
+        <script>
+            document.onselectstart = () => {
+                event.preventDefault();
+                alert('Sorry, you are not allowed to select text')
+            }
+        </script>
+
+        <div class="btn-Top">
+            <button onclick="topFunction()" class="btnTop" title="Go to top">^TOP</button>
+
+            <script>
+                var btnTop = document.getElementsByClassName("btnTop");
+
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+        </div>
+
+        <div class="container">
+            <div class="navbar">
+                <div class="navlogo">
+                    <a href="index.html"><img src="logo.JPG"></a>
+                </div>
+                <div class=nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li> 
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a>
+                            <ul>
+                                <li><a href="projects-the mines.html">The Mines</a></li>
+                                <li><a href="projects-kota damansara.html">Kota Damansara</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="services.html">Services</a>
+                            <ul>
+                                <li><a href="services-consultations.html">Consultations</a></li>
+                                <li><a href="services-floor plans.html">Floor Plans</a></li>
+                                <li><a href="services-constructions.html">Constructions</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-directory">
+                <p>PROJECTS / THE MINES</p>
+            </div>
+
+            <div class="homesplash">
+                <a href="September 2013 The Mines/the mines (43 of 70).jpg" target="blank"><img src="September 2013 The Mines/the mines (43 of 70).jpg"></a>
+            </div>
+
+            <div class="responsive_row">
+
+                <div class="projects-description">
+                    <div class="projects-description-50">
+                        <h1>The Mines, Seri Kembangan</h1>
+                        <p><b>Elegant Appeal. </b>The team of designers showed that glass can be incorporated into the design of our home in a variety of ways, whether architecturally or as decoration.</p>
+                    </div>
+
+                    <div class="projects-description-10">
+                        <div class="projects-description-10-details">
+                            <b>CATEGORY</b>
+                            <P>Bungalow, Residential</P>
+                            <br>
+                            <b>DESIGN CONCEPT</b>
+                            <P>Modern Simplicity</P>
+                            <br>
+                            <b>BUILT UP SIZE</b>
+                            <P>6,850 sq ft</P>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div class="projects-gallery">
+
+                    <script>
+                        var x = 0; //start point
+                        var images = [];
+                        var time = 3000;
+
+                        //image list
+                        images[0] = 'September 2013 The Mines/the mines (49 of 70).jpg';
+                        images[1] = 'September 2013 The Mines/the mines (1 of 70).jpg';
+                        images[2] = 'September 2013 The Mines/the mines (4 of 70).jpg';
+                        images[3] = 'September 2013 The Mines/the mines (11 of 70).jpg';
+                        images[4] = 'September 2013 The Mines/the mines (17 of 70).jpg';
+                        images[5] = 'September 2013 The Mines/the mines (23 of 70).jpg';
+                        images[6] = 'September 2013 The Mines/the mines (24 of 70).jpg';
+                        images[7] = 'September 2013 The Mines/the mines (31 of 70).jpg';
+                        images[8] = 'September 2013 The Mines/the mines (33 of 70).jpg';
+                        images[9] = 'September 2013 The Mines/the mines (37 of 70).jpg';
+                        images[10] = 'September 2013 The Mines/the mines (54 of 70).jpg';
+                        images[11] = 'September 2013 The Mines/the mines (62 of 70).jpg';
+                        images[12] = 'September 2013 The Mines/the mines (64 of 70).jpg';
+
+                        function changeImg(){
+                            document.slide.src = images[x];
+                            
+                            if(x < images.length -1){
+                                x++;
+                            } else {
+                                x = 0;
+                            }
+                            setTimeout("changeImg()", time);
+                        }
+
+                        window.onload = changeImg;
+                    </script>
+
+                    <img name="slide">
+
+                </div>
+
+                <a class="directory-a" href="projects-kota damansara.html">
+                    <div class="directory-bottom">
+                        <h2>Coming Up:</h2><h1>Projects / Kota Damansara</h1><h2>>>></h2>
+                    </div>
+               </a>
+                
+                <div class="footer">
+                    <div class="footer-img">
+                        <img src="logo.JPG" alt="">
+                    </div>
+                    
+                    <div class="footer-content">
+                        <h2>Navigation</h2>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-copyright">
+                        <p>Copyright © 2021 Calic Design All rights reserved. 002596590-V</p>
+                        <p>Made in Malaysia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

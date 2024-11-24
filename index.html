@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calic Design</title>
+        <meta name="viewport" content="width=device-width, initial-scal=1">
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+        <script>
+            alert("Welcome to Calic Design!");
+        </script>
+
+        <script>
+            document.addEventListener("contextmenu", function(event){
+                event.preventDefault();
+                alert('Right click menu is disabled');
+            }, false);
+        </script>
+
+        <script>
+            document.onselectstart = () => {
+                event.preventDefault();
+                alert('Sorry, you are not allowed to select text')
+            }
+        </script>
+
+        <div class="btn-Top">
+            <button onclick="topFunction()" class="btnTop" title="Go to top">^TOP</button>
+
+            <script>
+                var btnTop = document.getElementsByClassName("btnTop");
+
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+        </div>
+
+        <div class="container">
+            <div class="navbar">
+                <div class="navlogo">
+                    <a href="index.html"><img src="logo.JPG"></a>
+                </div>
+                <div class=nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li> 
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a>
+                            <ul>
+                                <li><a href="projects-the mines.html">The Mines</a></li>
+                                <li><a href="projects-kota damansara.html">Kota Damansara</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="services.html">Services</a>
+                            <ul>
+                                <li><a href="services-consultations.html">Consultations</a></li>
+                                <li><a href="services-floor plans.html">Floor Plans</a></li>
+                                <li><a href="services-constructions.html">Constructions</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="homesplash">
+                <a href="September 2013 The Mines/the mines (49 of 70).jpg" target="blank"><img src="September 2013 The Mines/the mines (49 of 70).jpg"></a>
+            </div>
+
+            <div class="responsive_row">
+
+                <div class="homeabout">
+                    <div class="homeabout_words">
+                        <h1>20 Years of experiences.</h1>
+                        <h1>Keep on going.</h1>
+                        <p>Established since 1998, Calic Design provides exquisite interior design concept to transform your dream home into works of arts.
+                        </p>
+                        <a href="about.html"><input type="button" value="About Us"></a>
+                    </div>
+                    <div class="homeabout_photo">
+                        <img src="logo.JPG" alt="">
+                    </div>
+                </div>
+
+                <div class="homeprojects">
+                    <div class="homeprojects_img_left">
+                        <img src="September 2013 The Mines/the mines (49 of 70).jpg" alt="">
+                    </div>
+
+                    <div class="homeprojects_mid">
+                        <h1>2 gorgeous projects.</h1>
+                        <h1>Professionally designed.</h1>
+                        <p>These two projects represent the iconic masterpieces been made by Calic Design. You will be amazed by the work of arts, and how they use household materials, transform into a marvelous home that we all been dreamed of.</p>
+                    
+                        <a href="projects.html"><input type="button" value="Projects"></a>
+                    </div>
+
+                    <div class="homeprojects_img_right">
+                        <img src="May 2015 Kota Damansara/KD-33.jpg" alt="">
+                    </div>
+
+                </div>
+
+                <div class="homeservices">
+                    <div class="homeservices_photo">
+                        <img src="services.jpg" alt="">
+                    </div>
+                    
+                    <div class="homeservices_words">
+                        <h1>Exceptional services.</h1>
+                        <h1>Curated just for you.</h1>
+                        <p>At Calic Design, we truly value the importance of providing an almost exceptional services to our clients, curated just for them.
+                        </p>
+                        <a href="services.html"><input type="button" value="Services"></a>
+                    </div>
+                </div>
+
+                <div class="home_blue">
+
+                </div>
+
+                <div class="homecontactus">
+                    <div class="homecontactus_info">
+                        <h1>Contact us now</h1>
+                    </div>
+                    
+                    <form action="">
+                        <div class="col-25">
+                            <label for="fname">First Name:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" name="firstname" id="fname" placeholder="First Name here" required>
+                        </div>
+                        
+                        <br>
+                        <div class="col-25">
+                            <label for="lname">Last Name:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="text" name="Lastname" id="lastname" placeholder="Last Name here" required>
+                        </div>
+                                                
+                        <br>
+                        <div class="col-25">
+                            <label for="email">Your email:</label>
+                        </div>
+                        <div class="col-75">
+                            <input type="email" name="email" id="email" placeholder="example: abc@abc.com" required>
+                        </div>
+                                                
+                        <br>
+                        <div class="col-25">
+                            <label for="location">City:</label>
+                        </div>
+                        <div class="col-75">
+                            <select name="City">
+                                <option>Ampang</option>
+                                <option>Kajang</option>
+                                <option>Klang</option>
+                                <option >Kuala Lumpur</option>
+                                <option>Petaling Jaya</option>
+                                <option>Shah Alam</option>
+                                <option>Subang Jaya</option>
+                                <option selected>*Select one*</option>
+                            </select>
+                        </div>
+                                            
+                        <br>
+                        <div class="col-25">
+                            <label for="message">Your message:</label>
+                        </div>
+                        <div class="col-75">
+                            <textarea name="message" id="message" placeholder="Message here" cols="30" rows="5"></textarea>
+                        </div>
+                                                
+                        <br>
+                        <input class="contact_submit" type="Submit" value="Submit">
+                    </form> 
+                </div>
+
+                <div class="footer">
+                    <div class="footer-img">
+                        <img src="logo.JPG" alt="">
+                    </div>
+                    
+                    <div class="footer-content">
+                        <h2>Navigation</h2>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-copyright">
+                        <p>Copyright © 2021 Calic Design All rights reserved. 002596590-V</p>
+                        <p>Made in Malaysia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

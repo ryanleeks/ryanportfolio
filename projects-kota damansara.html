@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Kota Damansara | Calic Design</title>
+        <meta name="viewport" content="width=device-width, initial-scal=1">
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+        <script>
+            document.addEventListener("contextmenu", function(event){
+                event.preventDefault();
+                alert('Right click menu is disabled');
+            }, false);
+        </script>
+
+        <script>
+            document.onselectstart = () => {
+                event.preventDefault();
+                alert('Sorry, you are not allowed to select text')
+            }
+        </script>
+
+        <div class="btn-Top">
+            <button onclick="topFunction()" class="btnTop" title="Go to top">^TOP</button>
+
+            <script>
+                var btnTop = document.getElementsByClassName("btnTop");
+
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+        </div>
+
+        <div class="container">
+            <div class="navbar">
+                <div class="navlogo">
+                    <a href="index.html"><img src="logo.JPG"></a>
+                </div>
+                <div class=nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li> 
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a>
+                            <ul>
+                                <li><a href="projects-the mines.html">The Mines</a></li>
+                                <li><a href="projects-kota damansara.html">Kota Damansara</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="services.html">Services</a>
+                            <ul>
+                                <li><a href="services-consultations.html">Consultations</a></li>
+                                <li><a href="services-floor plans.html">Floor Plans</a></li>
+                                <li><a href="services-constructions.html">Constructions</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="nav-directory">
+                <p>PROJECTS / KOTA DAMANSARA</p>
+            </div>
+
+            <div class="homesplash">
+                <a href="May 2015 Kota Damansara/KD-26.jpg" target="blank"><img src="May 2015 Kota Damansara/KD-26.jpg"></a>
+            </div>
+
+            <div class="responsive_row">
+
+                <div class="projects-description">
+                    <div class="projects-description-50">
+                        <h1>Kota Damansara</h1>
+                        <p><b>Indulgent Living. </b>Designed to embrace luxury at every level, this home oozes extravagance whilst retaining its sleek and sophisticated style integrating natural materials and textures with opulent furnishings.</p>
+                    </div>
+
+                    <div class="projects-description-10">
+                        <div class="projects-description-10-details">
+                            <b>CATEGORY</b>
+                            <P>Bungalow, Residential</P>
+                            <br>
+                            <b>DESIGN CONCEPT</b>
+                            <P>Modern Elegance</P>
+                            <br>
+                            <b>BUILT UP SIZE</b>
+                            <P>10,500 sq ft</P>
+                        </div>
+                    </div>
+                
+                </div>
+
+                <div class="projects-gallery">
+
+                    <script>
+                        var x = 0; //start point
+                        var images = [];
+                        var time = 3000;
+
+                        //image list
+                        images[0] = 'May 2015 Kota Damansara/KD-26.jpg';
+                        images[1] = 'May 2015 Kota Damansara/KD-33.jpg';
+                        images[2] = 'May 2015 Kota Damansara/KD-27.jpg';
+                        images[3] = 'May 2015 Kota Damansara/KD-5.jpg';
+                        images[4] = 'May 2015 Kota Damansara/KD-11.jpg';
+                        images[5] = 'May 2015 Kota Damansara/KD-21.jpg';
+                        images[6] = 'May 2015 Kota Damansara/KD-14.jpg';
+                        images[7] = 'May 2015 Kota Damansara/KD-16.jpg';
+                        images[8] = 'May 2015 Kota Damansara/KD-35.jpg';
+                        images[9] = 'May 2015 Kota Damansara/KD-38.jpg';
+                        images[10] = 'May 2015 Kota Damansara/KD-51.jpg';
+                        images[11] = 'May 2015 Kota Damansara/KD-46.jpg';
+                        images[12] = 'May 2015 Kota Damansara/KD-67.jpg';
+                        images[13] = 'May 2015 Kota Damansara/KD-73.jpg';
+                        images[14] = 'May 2015 Kota Damansara/KD-62.jpg';
+                        
+                        function changeImg(){
+                            document.slide.src = images[x];
+                            
+                            if(x < images.length -1){
+                                x++;
+                            } else {
+                                x = 0;
+                            }
+                            setTimeout("changeImg()", time);
+                        }
+
+                        window.onload = changeImg;
+                    </script>
+
+                    <img name="slide">
+
+                </div>
+
+                <a class="directory-a" href="services.html">
+                    <div class="directory-bottom">
+                        <h2>Next:</h2><h1>Services</h1><h2>>>></h2>
+                    </div>
+               </a>
+                
+                <div class="footer">
+                    <div class="footer-img">
+                        <img src="logo.JPG" alt="">
+                    </div>
+                    
+                    <div class="footer-content">
+                        <h2>Navigation</h2>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-copyright">
+                        <p>Copyright © 2021 Calic Design All rights reserved. 002596590-V</p>
+                        <p>Made in Malaysia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

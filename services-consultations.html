@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Consultations Services | Calic Design</title>
+        <meta name="viewport" content="width=device-width, initial-scal=1">
+        <link rel="stylesheet" href="CSS/style.css">
+    </head>
+    <body>
+        <script>
+            document.addEventListener("contextmenu", function(event){
+                event.preventDefault();
+                alert('Right click menu is disabled');
+            }, false);
+        </script>
+
+        <script>
+            document.onselectstart = () => {
+                event.preventDefault();
+                alert('Sorry, you are not allowed to select text')
+            }
+        </script>
+
+        <div class="btn-Top">
+            <button onclick="topFunction()" class="btnTop" title="Go to top">^TOP</button>
+
+            <script>
+                var btnTop = document.getElementsByClassName("btnTop");
+
+                function topFunction() {
+                    document.body.scrollTop = 0;
+                    document.documentElement.scrollTop = 0;
+                }
+            </script>
+        </div>
+        <div class="container">
+            <div class="navbar">
+                <div class="navlogo">
+                    <a href="index.html"><img src="logo.JPG"></a>
+                </div>
+                <div class=nav>
+                    <ul>
+                        <li><a href="index.html">Home</a></li> 
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="projects.html">Projects</a>
+                            <ul>
+                                <li><a href="projects-the mines.html">The Mines</a></li>
+                                <li><a href="projects-kota damansara.html">Kota Damansara</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="services.html">Services</a>
+                            <ul>
+                                <li><a href="services-consultations.html">Consultations</a></li>
+                                <li><a href="services-floor plans.html">Floor Plans</a></li>
+                                <li><a href="services-constructions.html">Constructions</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="responsive_row">
+
+                <div class="nav-directory">
+                    <p>SERVICES / CONSULTATIONS</p>
+                </div>
+
+                <div class="services-sub">
+                   <div class="services-sub-content">
+                        <h1>Just tell us what you want,</h1>
+                        <h1>we will make it possible.</h1>
+                        <p>We provide consultations to our client at the very beginning of the business process. Consulting you any ideas or concepts to fulfill your needs for your dream home. Consultation is the best way for the designers to get to know what the client wants and needs, providing the best outcome. </p>
+                   </div>
+                </div>
+
+                <div class="services-items">
+                    <div class="item-25">
+                        <img src="measure.png" alt="">
+                    </div>
+                    <div class="item-75">
+                        <p><b>Measure and provide floor plans.</b> At the beginning of the consultation process, we will analyze your home to figure out how to get the most of your interior design concept.</p>
+                    </div>
+                    <br>
+                    <div class="item-25">
+                        <img src="agreement.png" alt="">
+                    </div>
+                    <div class="item-75">
+                        <p><b>Tell us your need.</b> Just tell us what you want for your home, we will make it possible and curated just for you.</p>
+                    </div>
+                    
+               </div>
+
+               <a class="directory-a" href="services-floor plans.html">
+                    <div class="directory-bottom">
+                        <h2>Coming Up:</h2><h1>Services / Floor Plans</h1><h2>>>></h2>
+                    </div>
+               </a>
+                
+                <div class="footer">
+                    <div class="footer-img">
+                        <img src="logo.JPG" alt="">
+                    </div>
+                    
+                    <div class="footer-content">
+                        <h2>Navigation</h2>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About Us</a></li>
+                            <li><a href="projects.html">Projects</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="contact.html">Contact Us</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-copyright">
+                        <p>Copyright © 2021 Calic Design All rights reserved. 002596590-V</p>
+                        <p>Made in Malaysia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
