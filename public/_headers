@@ -1,0 +1,15 @@
+# Cloudflare Pages / Workers static assets: HTTP response headers.
+# The script/style CSP is emitted per page as a hash-based <meta> by Astro (security.csp).
+# frame-ancestors cannot be set via <meta>, so it lives here.
+/*
+  Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Content-Security-Policy: frame-ancestors 'none'
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable

@@ -1,0 +1,132 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/inter';
+@import '@fontsource-variable/fraunces';
+
+/* ---------- Design tokens ---------- */
+@theme {
+  --font-sans: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-night: #141311;
+  --color-sand: #cdb891;
+
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+:root {
+  color-scheme: light dark;
+  --canvas: #f6f3ee;
+  --surface: #ffffff;
+  --ink: #1c1a17;
+  --muted: #5f5a52;
+  --line: #e2dcd2;
+  --brand: #cdb891; /* original Calic sand */
+  --brand-ink: #7a5f2e; /* AA-contrast accent for text on light */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --canvas: #141311;
+    --surface: #1d1b18;
+    --ink: #ede8e0;
+    --muted: #a39d93;
+    --line: #2e2b26;
+    --brand: #cdb891;
+    --brand-ink: #d9c7a3;
+  }
+}
+
+/* ---------- Base ---------- */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply bg-canvas text-ink font-sans antialiased;
+    font-feature-settings: 'ss01', 'cv11';
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+    font-variation-settings: 'opsz' 96;
+    text-wrap: balance;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  ::selection {
+    background: var(--brand);
+    color: #1c1a17;
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+/* ---------- Components ---------- */
+@utility container-x {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-10;
+}
+@utility eyebrow {
+  @apply text-brand-ink text-xs font-semibold tracking-[0.22em] uppercase;
+}
+@utility btn {
+  @apply inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-medium transition duration-300;
+}
+@utility btn-primary {
+  @apply btn bg-ink text-canvas hover:bg-brand hover:text-night;
+}
+@utility btn-ghost {
+  @apply btn border-line text-ink hover:border-ink border;
+}
+@utility btn-light {
+  @apply btn text-night hover:bg-sand bg-white/95;
+}
+@utility link-underline {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.35s var(--ease-out-soft);
+  &:hover,
+  &[aria-current='page'] {
+    background-size: 100% 1px;
+  }
+}
+@utility field {
+  @apply border-line bg-surface text-ink placeholder:text-muted/70 focus:border-brand w-full rounded-xl border px-4 py-3 transition outline-none;
+}
+
+/* ---------- Scroll reveal (enhanced by src/scripts/reveal.ts; no-JS visitors see everything) ---------- */
+@media (scripting: enabled) and (prefers-reduced-motion: no-preference) {
+  [data-reveal] {
+    opacity: 0;
+    transform: translateY(24px);
+    transition:
+      opacity 0.9s var(--ease-out-soft),
+      transform 0.9s var(--ease-out-soft);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  [data-reveal].is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}

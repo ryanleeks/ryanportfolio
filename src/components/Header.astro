@@ -1,0 +1,90 @@
+---
+import Logo from './Logo.astro';
+import { nav } from '../data/site';
+
+interface Props {
+  /** Transparent header that sits over a full-bleed hero image */
+  overlay?: boolean;
+}
+const { overlay = false } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href || path.startsWith(href + '/');
+---
+
+<header
+  id="site-header"
+  data-overlay={overlay ? 'true' : undefined}
+  class="group/header fixed inset-x-0 top-0 z-50 transition-colors duration-500
+    bg-canvas/85 text-ink border-line/70 border-b backdrop-blur-md
+    data-overlay:border-transparent data-overlay:bg-transparent data-overlay:text-white data-overlay:backdrop-blur-none
+    data-overlay:data-scrolled:bg-canvas/85 data-overlay:data-scrolled:text-ink data-overlay:data-scrolled:border-line/70 data-overlay:data-scrolled:backdrop-blur-md"
+>
+  <a
+    href="#main"
+    class="bg-ink text-canvas sr-only rounded-full px-4 py-2 focus:not-sr-only focus:absolute focus:top-3 focus:left-4"
+  >
+    Skip to content
+  </a>
+  <div class="container-x flex h-18 items-center justify-between">
+    <a href="/" aria-label="Calic Design — home" class="shrink-0"><Logo /></a>
+
+    <nav aria-label="Primary" class="hidden md:block">
+      <ul class="flex items-center gap-9 text-sm font-medium">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class="link-underline py-1"
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a href="/contact" class="hidden rounded-full border border-current px-5 py-2 text-sm font-medium transition hover:bg-current/10 md:inline-flex">
+      Start a project
+    </a>
+
+    <button
+      type="button"
+      id="menu-toggle"
+      class="-mr-2 inline-flex size-11 items-center justify-center md:hidden"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+      aria-label="Open menu"
+    >
+      <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path class="menu-open" d="M4 8h16M4 16h16"></path>
+        <path class="menu-close hidden" d="M6 6l12 12M18 6L6 18"></path>
+      </svg>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="bg-canvas text-ink border-line hidden h-[calc(100dvh-4.5rem)] border-t md:hidden">
+    <nav aria-label="Mobile" class="container-x flex h-full flex-col justify-between py-10">
+      <ul class="font-display space-y-5 text-4xl">
+        <li><a href="/" aria-current={path === '/' ? 'page' : undefined}>Home</a></li>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}>
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <a href="/contact" class="btn-primary self-start">Start a project</a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  import { initHeader } from '../scripts/header';
+  initHeader();
+</script>

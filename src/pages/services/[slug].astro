@@ -1,0 +1,66 @@
+---
+import { Image } from 'astro:assets';
+import { getCollection, render, type CollectionEntry } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+export async function getStaticPaths() {
+  const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+  return services.map((service, i) => ({
+    params: { slug: service.id },
+    props: { service, index: i, next: services[(i + 1) % services.length] },
+  }));
+}
+
+interface Props {
+  service: CollectionEntry<'services'>;
+  index: number;
+  next: CollectionEntry<'services'>;
+}
+const { service, index, next } = Astro.props;
+const s = service.data;
+const { Content } = await render(service);
+---
+
+<Base title={s.title} description={s.summary} ogImage={s.cover}>
+  <PageHeader eyebrow={`Services / ${String(index + 1).padStart(2, '0')} ${s.title}`} title={s.headline} lede={s.summary} />
+
+  <section class="container-x" data-reveal>
+    <Image src={s.cover} alt={s.coverAlt} widths={[800, 1400, 2200]} sizes="100vw" class="aspect-video w-full rounded-3xl object-cover md:aspect-21/9" loading="eager" />
+  </section>
+
+  <section class="container-x grid gap-14 py-20 md:py-28 lg:grid-cols-12">
+    <div class="text-muted text-lg leading-relaxed lg:col-span-5 [&_p+p]:mt-4" data-reveal>
+      <Content />
+    </div>
+    <ul class="space-y-12 lg:col-span-6 lg:col-start-7">
+      {
+        s.features.map((f, i) => (
+          <li class="border-line border-t pt-8" data-reveal>
+            <div class="flex items-baseline gap-4">
+              <span class="text-brand-ink font-display text-sm">{String(i + 1).padStart(2, '0')}</span>
+              <h2 class="text-2xl md:text-3xl">{f.title}</h2>
+            </div>
+            <p class="text-muted mt-3 leading-relaxed">{f.body}</p>
+            {f.image && (
+              <Image src={f.image} alt={f.imageAlt ?? ''} widths={[500, 900]} sizes="(min-width: 1024px) 45vw, 100vw" class="mt-6 aspect-3/2 w-full rounded-2xl object-cover" />
+            )}
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <section class="container-x">
+    <a href={`/services/${next.id}`} class="group border-line flex items-center justify-between gap-6 border-y py-10" data-reveal>
+      <div>
+        <p class="eyebrow">Coming up</p>
+        <p class="font-display mt-3 text-4xl transition group-hover:translate-x-2 md:text-6xl">{next.data.title}</p>
+      </div>
+      <span class="border-line group-hover:bg-ink group-hover:text-canvas inline-flex size-14 shrink-0 items-center justify-center rounded-full border text-xl transition" aria-hidden="true">→</span>
+    </a>
+  </section>
+
+  <CtaBanner />
+</Base>

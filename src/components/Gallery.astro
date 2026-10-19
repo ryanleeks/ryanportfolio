@@ -1,0 +1,70 @@
+---
+import { Image, getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  images: { src: ImageMetadata; alt: string }[];
+}
+const { images } = Astro.props;
+
+const items = await Promise.all(
+  images.map(async (img) => ({
+    ...img,
+    full: (await getImage({ src: img.src, width: Math.min(img.src.width, 2000), format: 'webp', quality: 82 })).src,
+  })),
+);
+---
+
+<div data-gallery>
+  <ul class="columns-1 gap-4 sm:columns-2 lg:columns-3 [&>li]:mb-4">
+    {
+      items.map((img, i) => (
+        <li class="break-inside-avoid" data-reveal>
+          <button
+            type="button"
+            class="group block w-full overflow-hidden rounded-2xl"
+            data-index={i}
+            data-full={img.full}
+            data-alt={img.alt}
+            aria-label={`View larger: ${img.alt}`}
+          >
+            <Image
+              src={img.src}
+              alt={img.alt}
+              widths={[480, 800, 1200]}
+              sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+              class="w-full transition duration-700 ease-out group-hover:scale-[1.03]"
+            />
+          </button>
+        </li>
+      ))
+    }
+  </ul>
+
+  <dialog
+    class="m-0 h-dvh max-h-none w-screen max-w-none bg-transparent p-0 text-white backdrop:bg-black/95 open:flex open:flex-col"
+    aria-label="Image viewer"
+  >
+    <div class="flex items-center justify-between px-4 py-3 text-sm sm:px-6">
+      <span data-counter class="tabular-nums text-white/70"></span>
+      <button type="button" data-close class="inline-flex size-11 items-center justify-center rounded-full hover:bg-white/10" aria-label="Close">
+        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+      </button>
+    </div>
+    <figure class="relative flex min-h-0 flex-1 flex-col items-center justify-center px-2 pb-4 sm:px-20">
+      <img data-image alt="" class="max-h-full min-h-0 w-auto max-w-full object-contain" decoding="async" />
+      <figcaption data-caption class="mt-4 max-w-2xl px-4 text-center text-sm text-white/70"></figcaption>
+      <button type="button" data-prev class="absolute top-1/2 left-2 hidden size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 sm:inline-flex" aria-label="Previous image">
+        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M15 6l-6 6 6 6"></path></svg>
+      </button>
+      <button type="button" data-next class="absolute top-1/2 right-2 hidden size-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/10 hover:bg-white/20 sm:inline-flex" aria-label="Next image">
+        <svg class="size-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M9 6l6 6-6 6"></path></svg>
+      </button>
+    </figure>
+  </dialog>
+</div>
+
+<script>
+  import { initLightbox } from '../scripts/lightbox';
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach(initLightbox);
+</script>

@@ -1,0 +1,33 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+
+interface Props {
+  service: CollectionEntry<'services'>;
+  index: number;
+}
+const { service, index } = Astro.props;
+const s = service.data;
+---
+
+<article class="group bg-surface border-line flex flex-col overflow-hidden rounded-3xl border" data-reveal>
+  <a href={`/services/${service.id}`} class="flex h-full flex-col">
+    <div class="overflow-hidden">
+      <Image
+        src={s.cover}
+        alt={s.coverAlt}
+        widths={[480, 800]}
+        sizes="(min-width: 768px) 33vw, 100vw"
+        class="aspect-3/2 w-full object-cover transition duration-1000 ease-out group-hover:scale-[1.04]"
+      />
+    </div>
+    <div class="flex flex-1 flex-col p-7">
+      <p class="text-brand-ink font-display text-sm">{String(index + 1).padStart(2, '0')}</p>
+      <h3 class="mt-2 text-2xl">{s.title}</h3>
+      <p class="text-muted mt-3 flex-1 text-sm leading-relaxed">{s.summary}</p>
+      <span class="mt-6 inline-flex items-center gap-2 text-sm font-medium">
+        Learn more <span aria-hidden="true" class="transition group-hover:translate-x-1">→</span>
+      </span>
+    </div>
+  </a>
+</article>

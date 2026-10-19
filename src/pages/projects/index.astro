@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const projects = (await getCollection('projects')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Projects" description="Selected residential interior design projects by Calic Design in the Klang Valley.">
+  <PageHeader
+    eyebrow="Projects"
+    title="Gorgeous homes, professionally designed."
+    lede="These projects represent some of Calic Design's signature work — everyday materials transformed into the homes our clients have always dreamed of."
+  />
+  <section class="container-x grid gap-14 pb-8 md:grid-cols-2 md:gap-10">
+    {projects.map((project, i) => <ProjectCard project={project} priority={i < 2} />)}
+  </section>
+  <CtaBanner />
+</Base>
