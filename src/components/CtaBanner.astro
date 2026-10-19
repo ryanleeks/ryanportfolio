@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import bg from '../assets/projects/kota-damansara/kota-damansara-14.jpg';
+---
+
+<section class="container-x py-24">
+  <div class="relative isolate overflow-hidden rounded-3xl" data-reveal>
+    <Image src={bg} alt="" widths={[800, 1400, 2000]} sizes="(min-width: 1280px) 1200px, 100vw" class="absolute inset-0 -z-10 h-full w-full object-cover" />
+    <div class="absolute inset-0 -z-10 bg-linear-to-r from-black/80 via-black/60 to-black/20"></div>
+    <div class="max-w-2xl px-8 py-20 text-white md:px-16 md:py-28">
+      <p class="text-sand text-xs font-semibold tracking-[0.22em] uppercase">Let's talk</p>
+      <h2 class="mt-5 text-4xl leading-tight md:text-6xl">Make your dream home come true.</h2>
+      <p class="mt-6 max-w-md text-white/80">Tell us about your space and what you have in mind. We'll take it from first sketch to final finish.</p>
+      <a href="/contact" class="btn-light mt-10">Get in touch <span aria-hidden="true">→</span></a>
+    </div>
+  </div>
+</section>

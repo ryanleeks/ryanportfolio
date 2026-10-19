@@ -1,0 +1,41 @@
+---
+import { Image } from 'astro:assets';
+import Base from '../layouts/Base.astro';
+import PageHeader from '../components/PageHeader.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { site } from '../data/site';
+import side from '../assets/projects/the-mines/the-mines-04.jpg';
+---
+
+<Base title="Contact" description="Start your interior design or renovation project with Calic Design. Serving the Klang Valley since 1998.">
+  <PageHeader
+    eyebrow="Contact us"
+    title="Make your dream home come true."
+    lede="Tell us a little about your home and what you have in mind — we'll get back to you to arrange a consultation."
+  />
+
+  <section class="container-x grid gap-14 pb-24 lg:grid-cols-12">
+    <div class="bg-surface border-line rounded-3xl border p-6 sm:p-10 lg:col-span-7" data-reveal>
+      <ContactForm />
+    </div>
+    <aside class="space-y-10 lg:col-span-4 lg:col-start-9">
+      <div data-reveal>
+        <Image src={side} alt="White grand piano beside a timber feature wall at The Mines" widths={[500, 900]} sizes="(min-width: 1024px) 33vw, 100vw" class="aspect-4/5 w-full rounded-3xl object-cover" />
+      </div>
+      <div data-reveal>
+        <h2 class="eyebrow font-sans">Service areas</h2>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {site.serviceAreas.map((c) => <li class="border-line rounded-full border px-3 py-1 text-sm">{c}</li>)}
+        </ul>
+      </div>
+      <div data-reveal>
+        <h2 class="eyebrow font-sans">What happens next</h2>
+        <ol class="text-muted mt-4 space-y-3 text-sm leading-relaxed">
+          <li><span class="text-ink font-medium">1. We reply</span> to arrange a consultation.</li>
+          <li><span class="text-ink font-medium">2. We measure</span> your space and listen to your needs.</li>
+          <li><span class="text-ink font-medium">3. We design</span> floor plans and a concept for you.</li>
+        </ol>
+      </div>
+    </aside>
+  </section>
+</Base>

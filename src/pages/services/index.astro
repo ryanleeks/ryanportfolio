@@ -1,0 +1,35 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import PageHeader from '../../components/PageHeader.astro';
+import ServiceCard from '../../components/ServiceCard.astro';
+import CtaBanner from '../../components/CtaBanner.astro';
+
+const services = (await getCollection('services')).sort((a, b) => a.data.order - b.data.order);
+---
+
+<Base title="Services" description="Consultation, floor plans and construction — Calic Design's end-to-end interior design and build services.">
+  <PageHeader
+    eyebrow="Services"
+    title="Exceptional service, curated just for you."
+    lede="Great service is at the core of how we work. It allows better collaboration between clients and designers — and a final result made for you."
+  />
+
+  <section class="container-x">
+    <ol class="border-line mb-14 grid gap-6 border-y py-8 sm:grid-cols-3" aria-label="How we work">
+      {
+        services.map((s, i) => (
+          <li class="flex items-baseline gap-4" data-reveal>
+            <span class="text-brand-ink font-display">{String(i + 1).padStart(2, '0')}</span>
+            <span class="text-lg">{s.data.title}</span>
+          </li>
+        ))
+      }
+    </ol>
+    <div class="grid gap-6 md:grid-cols-3">
+      {services.map((service, i) => <ServiceCard service={service} index={i} />)}
+    </div>
+  </section>
+
+  <CtaBanner />
+</Base>

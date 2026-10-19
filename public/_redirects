@@ -1,0 +1,11 @@
+# Legacy URLs from the original static site -> new routes
+/index.html                      /                           301
+/about.html                      /about                      301
+/contact.html                    /contact                    301
+/projects.html                   /projects                   301
+/projects-the%20mines.html       /projects/the-mines         301
+/projects-kota%20damansara.html  /projects/kota-damansara    301
+/services.html                   /services                   301
+/services-consultations.html     /services/consultation      301
+/services-floor%20plans.html     /services/floor-plans       301
+/services-constructions.html     /services/construction      301

@@ -1,0 +1,13 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+
+<span class:list={['inline-flex flex-col items-center leading-none', className]} aria-label="Calic Interior Design">
+  <span class="relative border border-current px-3 pt-1.5 pb-1" aria-hidden="true">
+    <span class="font-display block text-lg font-semibold tracking-tight">Calic</span>
+    <span class="block text-center text-[0.55rem] tracking-[0.45em]">DESIGN</span>
+  </span>
+</span>

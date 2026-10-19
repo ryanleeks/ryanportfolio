@@ -1,0 +1,34 @@
+---
+import Logo from './Logo.astro';
+import { nav, site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer class="bg-night text-[#ede8e0]">
+  <div class="container-x py-20">
+    <div class="grid gap-14 md:grid-cols-12">
+      <div class="md:col-span-5">
+        <Logo class="text-sand" />
+        <p class="mt-6 max-w-sm text-sm leading-relaxed text-[#a39d93]">
+          Interior design &amp; build studio crafting timeless homes across the Klang Valley since {site.founded}.
+        </p>
+      </div>
+      <nav aria-label="Footer" class="md:col-span-3">
+        <h2 class="text-sand font-sans text-xs font-semibold tracking-[0.22em] uppercase">Explore</h2>
+        <ul class="mt-5 space-y-3 text-sm">
+          <li><a class="link-underline" href="/">Home</a></li>
+          {nav.map((item) => <li><a class="link-underline" href={item.href}>{item.label}</a></li>)}
+        </ul>
+      </nav>
+      <div class="md:col-span-4">
+        <h2 class="text-sand font-sans text-xs font-semibold tracking-[0.22em] uppercase">Service areas</h2>
+        <p class="mt-5 text-sm leading-relaxed text-[#a39d93]">{site.serviceAreas.join(' · ')}</p>
+        <a href="/contact" class="btn-light mt-8">Start a project <span aria-hidden="true">→</span></a>
+      </div>
+    </div>
+    <div class="mt-20 flex flex-col gap-2 border-t border-white/10 pt-8 text-xs text-[#a39d93] sm:flex-row sm:justify-between">
+      <p>© {year} {site.legalName} ({site.registration}). All rights reserved.</p>
+      <p>Made in Malaysia</p>
+    </div>
+  </div>
+</footer>
